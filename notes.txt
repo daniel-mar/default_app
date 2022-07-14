@@ -1,0 +1,87 @@
+Before we begin: this default_project will be focused on the (backend/server/db)
+    portion of the full stack application setup, we will establish the client but will not YET
+    develop the front-end components and necessary connections to the backend/server/db.
+
+Meaning that I will establish our backend, server and front-end. 
+    Where by the end we will have a tested backend + db connection with routes that 
+    succesfully run desired CRUD operations (among possible other queries) through POSTMAN.
+
+    -The goal is to practice, improve on by understanding the processes of the backend:
+        how to store credentials to our db, test and communicate succesfully with our front-end.      
+    - Meaning that our front-end development portion can begin and rule out the backend/server
+        as issues since we confirmed to be working, to then process to the front-end design portion of this.
+    - This will be my quick-start default project for projects, for cloning
+
+NOTE 
+** : signifies that we completed a section of our project and are beginning a new portion.
+    - consider these as checkpoints, for a sense of accomplishment! Creating full stack applications
+    may be a lot of work and we should proceed by creating and testing as we go.
+
+        -- LETS BEGIN --
+
+** modularizing and installing dependencies for a new full stack application.
+    -- beginning with our backend and database connection (default values).
+
+1) create package.json:
+    npm init -y
+
+2) install dependencies (backend, db, middleware):
+    npm i mongoose express cors
+
+3) install DOTENV for securing our db credentials within a .env file
+    npm i dotenv
+
+4) create a server.js file, .env file, .gitignore file & server folder in the same folder.
+    default_project folder > server.js, .env, .gitignore & server folder > config, controllers, models, routes
+        -- .gitignore => .env node_modules --
+            - (to obfuscate our credentials and possible bloat).
+
+5) setup our config folder, our mongoose.config file will use our .env file to connect to db,
+    update the database for your new project goals, within our .env file.
+        -- config file and server.js likely reusable and gather data from dotenv.
+
+6) test our backend by attempting to connect to our config with server.js
+    -- comment out our routes to test connection (temporarily until we complete our desired routes).
+        nodemon server.js
+    -- expected consoles: 
+        Listening on port: ###### - from server.js
+        Connection to DB established - from mongoose.config.js
+
+** NICE! You have succesfully set up your secure backend and db connection. --
+    -- Next, will be establishing the front end and connecting it for full stack functionality. --
+
+1) now we can create our front-end:
+    npx create-react-app client
+        if that does not run, you may need to update tar with: npm i tar@6 -g
+
+2) cd into the new client folder
+    cd client
+
+3) install axios for making request in our client:
+    npm i axios react-router-dom@6
+
+    -- within client > src
+        create a components folder to house our Main.js component file.
+            components > Main.js
+        where we can import {useEffect, useState} from react and axios.
+
+** Great, now we can fill our server subfolders and the order we approach this is
+    - how our app will communicate with itself:
+        models, controllers, routes
+    
+    - Depending on our project, these models / schemas may vary, we will have our default project
+    be a user (that we perform CRUD and possibly a unique entry check within our db). 
+    
+    - Understand that our models will be our schema / data types that we set up as
+    exportable (at end of file), that will represent how our collections are structured (in MongoDB).
+        - These will allow our controllers to import them and perform CRUD operations on them.
+    
+    - Finally after our controllers are finished, or in other words, all of our desired queries
+    or operations are in effect. We will establish our routes:
+        - Creating the specific URLs for each GET & POST requests, as we would want
+        them to be done on our front-end.
+
+    - We should have our routes portion in server.js commented out from earlier. So uncomment that,
+    and update it for your file (may have a different name for each project).
+
+    ** We are now ready for testing our CRUD operations within our db using POSTMAN.
