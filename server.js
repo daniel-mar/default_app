@@ -5,18 +5,23 @@ config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
+
 // store DOTENV port information
-const port = process.env.port;
+const port = process.env.PORT;
 
         // -- Step 2 --
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-        // -- Step 3 --
+// -- Step 3 --
+
 // -- Routes --
-// const AllMyUserRoutes = require('./server/routes/user.routes');
-// AllMyUserRoutes(app);
+// Default Commented || Uncomment once models > controllers > routes are established.
+// Once ready for testing in Postman, uncomment the following lines
+const AllMyUserRoutes = require('./server/routes/user.routes.js');
+AllMyUserRoutes(app);
+
 /*
 * Connection to DB, if error, check on correct file structures and file nomenclature.
 * For React18 + MongoDB Cloud (Backend). Also notice, when using DOTENV, the ending if ();

@@ -1,5 +1,5 @@
 // Securing our connection to database + using destructuring.
-const {connect} = require('mongoose');
+const {connect, mongo, default: mongoose} = require('mongoose');
 const {config} = require('dotenv');
 
 // The following is Bonus: for securing credentials (paired with server.js).
@@ -7,6 +7,10 @@ const {config} = require('dotenv');
 module.exports = () => {
     // Invoke dotenv config availability of variables
     config();
+
+    // NEW: Mongoose 7, will be set back to false, to suppress warning and be ahead of the change == Add Below ==
+    mongoose.set('strictQuery', false);
+
     // Establish our uri with dotenv
     const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_LOC}.vddhv.mongodb.net/test`;
         // Our db info are passed as options rather than within our connection string.

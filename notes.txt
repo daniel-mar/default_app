@@ -48,7 +48,8 @@ NOTE
         Connection to DB established - from mongoose.config.js
 
 ** NICE! You have succesfully set up your secure backend and db connection. --
-    -- Next, will be establishing the front end and connecting it for full stack functionality. --
+
+-- Next, will be establishing the front end and connecting it for full stack functionality. --
 
 1) now we can create our front-end:
     npx create-react-app client
