@@ -2,10 +2,6 @@
 // Meaning we have a user name and 
 const User = require('../models/user.model');
 
-module.exports.sayHello = (req, res) => {
-    res.json({msg: "did this connect and say hello"})
-}
-
 // Find ALL users
 module.exports.findAllUsers = (req, res) => {
     User.find()
